@@ -8,7 +8,7 @@ RUN cd target && ls
 RUN echo "${JAR_FILE}"
 
 FROM java:8
-COPY --from=builder ${JAR_FILE} /app.jar
+COPY --from=builder ${JAR_FILE} app.jar
 RUN bash -c 'touch app.jar'
 
 EXPOSE 8080
