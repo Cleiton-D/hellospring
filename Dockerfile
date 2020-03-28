@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine as builder
+FROM java:8 as builder
 
 COPY . .
 RUN ./mvnw package
@@ -7,7 +7,7 @@ RUN cd target && ls
 
 RUN echo "${JAR_FILE}"
 
-FROM openjdk:8-jdk-alpine
+FROM java:8
 COPY --from=builder ${JAR_FILE} app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "app.jar"]
