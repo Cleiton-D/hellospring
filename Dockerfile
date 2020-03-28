@@ -3,9 +3,7 @@ FROM openjdk:8-jdk-alpine as builder
 COPY . .
 RUN ./mvnw package
 ARG JAR_FILE=target/*.jar
-RUN cd target
-RUN ls
-RUN cd ..
+RUN cd target && ls
 
 RUN echo "${JAR_FILE}"
 
